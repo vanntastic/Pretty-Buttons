@@ -3,6 +3,11 @@
     width: 100%;
 }
 
+/* The submit line */
+.submit-line{
+  padding:10px 0;
+}
+
 a.button {
     background: transparent url('../images/buttons/bg_button_a.gif') no-repeat scroll top right;
     color: #444;
