@@ -17,7 +17,7 @@ Installation
 
         <%= include_pretty_buttons %>
     
-Usage
+USAGE
 =====
 
 pretty_button "click me", path, options={}
@@ -25,8 +25,7 @@ pretty_button "click me", path, options={}
 
 The pretty_button method takes the same options as link_to
 
-Example
--------
+EXAMPLE:
 
     <%= pretty_button "Sign up!", signup_path %>
 
