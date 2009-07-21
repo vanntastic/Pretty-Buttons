@@ -15,17 +15,30 @@ module PrettyButtons
   
   # generates a pretty submit button inside a container
   # USAGE :
+  # 
   #   pretty_submit "Sign Up!" # => generates a pretty submit button for the parent form
   # 
   # if you need to generate a submit button for a more complex form, here's an example:
+  # 
   #   pretty_submit "Sign Up!", :form => "signup-form"
+  # 
+  # you can also pass a block if you want to put stuff inside the container
+  # 
+  #   pretty_submit "Sign Up!" do
+  #     or <a href="history.go(-1)">cancel</a>
+  #   end
+  # 
+  # OPTIONS:
+  #   :div = div html attributes for the container, all html attributes are valid
+  #   :btn = anchor attributes for the button, all html attributes are valid     
+  #   :form = the id of the form you want to submit, use this on complex form layouts
   # 
   # NOTE : 
   #   this method uses javascript to submit the form, so this requires that you only
   #   nest the the submit button one element inside the the form, if you need this to 
   #   work for a more complex form where the submit button is nested more than one level
   #   deep then simply pass the id of the form to the :form option
-  
+  # 
   def pretty_submit(content, options={}, &blk)
     default_form = "document.getElementById(this.id).parentNode.parentNode"
     options[:form] ||= default_form
