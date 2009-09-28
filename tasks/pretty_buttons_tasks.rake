@@ -1,19 +1,20 @@
 require 'fileutils'
 
-PUBLIC_CSS = File.join(RAILS_ROOT,"public","stylesheets")
-PUBLIC_IMGS = File.join(RAILS_ROOT,"public","images")
-PLUGIN_PATH = File.join(RAILS_ROOT, "vendor/plugins/pretty_buttons")
+PRETTY_PUBLIC_CSS = File.join(RAILS_ROOT,"public","stylesheets")
+PRETTY_PUBLIC_IMGS = File.join(RAILS_ROOT,"public","images")
+PRETTY_PLUGIN_PATH = File.join(RAILS_ROOT, "vendor/plugins/Pretty-Buttons")
 
 namespace :pretty_buttons do
   desc 'Installs all the files for the buttons'
   task :install do
-    css_path = Dir.glob File.join(PLUGIN_PATH, "css", "*.css")
-    imgs_path = Dir.glob File.join(PLUGIN_PATH, "images", "*.gif")
+    css_path = Dir.glob File.join(PRETTY_PLUGIN_PATH, "css", "*.css")
+    imgs_path = Dir.glob File.join(PRETTY_PLUGIN_PATH, "images", "*.gif")
     
-    btn_dir = Dir.mkdir File.join(PUBLIC_IMGS,"buttons")
+    new_img_path = File.join PRETTY_PUBLIC_IMGS,"buttons"
+    btn_dir = Dir.mkdir new_img_path unless File.exists? new_img_path
     
-    FileUtils.cp_r imgs_path, File.join(PUBLIC_IMGS, "buttons")
-    FileUtils.cp_r css_path, PUBLIC_CSS
+    FileUtils.cp_r imgs_path, new_img_path
+    FileUtils.cp_r css_path, PRETTY_PUBLIC_CSS
     
     puts "Pretty Buttons installed!"
     puts "--"
