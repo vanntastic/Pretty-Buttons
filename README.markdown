@@ -34,7 +34,7 @@ EXAMPLES
     <%= destroy_button "Delete User", user_path, :method => :delete %>
 
     # run the following task to get a list of all icon based button methods
-    # note that you will need the `less` command to run this task, sorry window people
+    # note that you will need the `less` command to run this task, sorry windows people
     rake pretty_buttons:list
     
 USAGE
