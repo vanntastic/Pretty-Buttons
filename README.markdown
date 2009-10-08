@@ -9,13 +9,13 @@ Pretty Buttons is another button plugin that allows you to use pretty buttons li
 Installation    
 ============
 
-1. run:
+1. Run:
 
-   rake pretty_buttons:install
+        rake pretty_buttons:install
     
 2. add this to your layout file
 
-   <%= include_pretty_buttons %>
+        <%= include_pretty_buttons %>
         
 EXAMPLES
 ========
