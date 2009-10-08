@@ -11,11 +11,31 @@ Installation
 
 1. run:
 
-        rake pretty_buttons:install
+     rake pretty_buttons:install
     
 2. add this to your layout file
 
-        <%= include_pretty_buttons %>
+     <%= include_pretty_buttons %>
+        
+EXAMPLES
+========
+    
+    # standard pretty button
+    <%= pretty_button "Sign up!", signup_path %>
+    
+    # form submit button
+    <%= pretty_submit "Create User" %>
+    
+    # icon based pretty buttons, just like the ones that github uses!
+    <%= add_button "Add User", user_path %>
+    
+    # the buttons also match restful conventions as well
+    <%= edit_button "Edit User", edit_user_path %>
+    <%= destroy_button "Delete User", user_path, :method => :delete %>
+
+    # run the following task to get a list of all icon based button methods
+    # note that you will need the `less` command to run this task, sorry window people
+    rake pretty_buttons:list
     
 USAGE
 =====
@@ -61,3 +81,7 @@ Copyright (c) 2009 Vann Ek, released under the MIT license
 Original Concept by Oscar Alexander:
 
     http://www.oscaralexander.com/tutorials/how-to-make-sexy-buttons-with-css.html
+    
+Silk Icons from famfamfam:
+    
+    http://famfamfam.com/lab/icons/silk/

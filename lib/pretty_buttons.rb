@@ -1,5 +1,8 @@
 module PrettyButtons
   
+  ICON_FILES = Dir.glob(File.join("public/images/buttons/icons","*.png"))
+  ICONS = ICON_FILES.map { |i| i.split("/").last }
+  
   # gives you the stylesheet link for the buttons
   def include_pretty_buttons
     stylesheet_link_tag 'buttons'
@@ -11,6 +14,18 @@ module PrettyButtons
   def pretty_button(content, path, options={})
     options[:class] = options[:class].nil? ? "button" : "button " << options[:class]
     link_to "<span>#{content}</span>", path, options
+  end
+  
+  # dynamically Generate all icon based buttons
+  ICONS.each do |icon|
+    eval <<-ICN
+      def #{icon.split(".").first}_button(content='',path='',options={})
+        options[:class] = options[:class].nil? ? "button" : ("button " << options[:class])
+        content = content_tag :span, content, :class => "icon"
+        button_content = image_tag("buttons/icons/#{icon}") << content
+        link_to button_content, path, options
+      end
+    ICN
   end
   
   # generates a pretty submit button inside a container
@@ -60,5 +75,19 @@ module PrettyButtons
 	    content_tag :div, btn, options[:div]
     end
   end
+  
+  alias :back_button :arrow_left_button
+  alias :delete_button :cancel_button
+  alias :destroy_button :cancel_button
+  alias :edit_button :pencil_button
+  
+  # some convenient button macros
+  alias :back_button :arrow_left_button
+  alias :forward_button :arrow_right_button
+  alias :refresh_button :arrow_refresh_button
+  alias :up_button :arrow_up_button
+  alias :down_button :arrow_down_button
+  alias :print_button :printer_button
+  alias :search_button :magnifier_button
   
 end
