@@ -76,18 +76,21 @@ module PrettyButtons
     end
   end
   
-  alias :back_button :arrow_left_button
-  alias :delete_button :cancel_button
-  alias :destroy_button :cancel_button
-  alias :edit_button :pencil_button
-  
-  # some convenient button macros
-  alias :back_button :arrow_left_button
-  alias :forward_button :arrow_right_button
-  alias :refresh_button :arrow_refresh_button
-  alias :up_button :arrow_up_button
-  alias :down_button :arrow_down_button
-  alias :print_button :printer_button
-  alias :search_button :magnifier_button
+  if RAILS_GEM_VERSION > '1.2.3'
+    # Rails 1.2.3 doesn't do do aliases on dynamic methods
+    alias :back_button :arrow_left_button
+    alias :delete_button :cancel_button
+    alias :destroy_button :cancel_button
+    alias :edit_button :pencil_button
+
+    # some convenient button macros
+    alias :back_button :arrow_left_button
+    alias :forward_button :arrow_right_button
+    alias :refresh_button :arrow_refresh_button
+    alias :up_button :arrow_up_button
+    alias :down_button :arrow_down_button
+    alias :print_button :printer_button
+    alias :search_button :magnifier_button
+  end
   
 end
