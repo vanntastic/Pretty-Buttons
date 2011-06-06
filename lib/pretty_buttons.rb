@@ -13,7 +13,7 @@ module PrettyButtons
   #   pretty_button 'Click me', signup_url
   def pretty_button(content, path, options={})
     options[:class] = options[:class].nil? ? "button" : "button " << options[:class]
-    link_to "<span>#{content}</span>", path, options
+    link_to "<span>#{content}</span>".html_safe, path, options
   end
   
   # dynamically Generate all icon based buttons
@@ -68,7 +68,7 @@ module PrettyButtons
     options[:div][:class] = options[:div][:class].nil? ? "clear submit-line" : ("clear submit-line " << options[:div][:class])
     
     options.delete :form
-    btn = link_to("<span>#{content}</span>", '#', options[:btn])
+    btn = link_to("<span>#{content}</span>".html_safe, '#', options[:btn])
     if block_given?
       concat content_tag(:div, "#{btn}#{capture(&blk)}", options[:div]), blk.binding
 	  else
@@ -76,7 +76,7 @@ module PrettyButtons
     end
   end
   
-  if RAILS_GEM_VERSION > '1.2.3'
+  if Rails.version > '1.2.3'
     # Rails 1.2.3 doesn't do do aliases on dynamic methods
     alias :back_button :arrow_left_button
     alias :delete_button :cancel_button
@@ -91,6 +91,6 @@ module PrettyButtons
     alias :down_button :arrow_down_button
     alias :print_button :printer_button
     alias :search_button :magnifier_button
-  end if defined? RAILS_GEM_VERSION
+  end
   
 end

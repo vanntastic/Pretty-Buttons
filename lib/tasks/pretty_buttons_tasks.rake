@@ -1,8 +1,8 @@
 require 'fileutils'
 
-PRETTY_PUBLIC_CSS = File.join(RAILS_ROOT,"public","stylesheets")
-PRETTY_PUBLIC_IMGS = File.join(RAILS_ROOT,"public","images")
-PRETTY_PLUGIN_PATH = File.join(RAILS_ROOT, "vendor/plugins/Pretty-Buttons")
+PRETTY_PUBLIC_CSS = File.join(Rails.root,"public","stylesheets")
+PRETTY_PUBLIC_IMGS = File.join(Rails.root,"public","images")
+PRETTY_PLUGIN_PATH = File.join(Rails.root, "vendor/plugins/Pretty-Buttons")
 
 namespace :pretty_buttons do
   desc 'Installs all the files for the buttons'
